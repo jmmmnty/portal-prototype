@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnpxvpa5581m4"]
+
+[ext_resource type="Script" uid="uid://caqordpxaybct" path="res://scenes/code_test.gd" id="1_rnrlo"]
+[ext_resource type="PackedScene" uid="uid://d13cxj04vqj7f" path="res://scenes/map.tscn" id="2_ag2uy"]
+[ext_resource type="Script" uid="uid://d33ndlgh8lw7i" path="res://scenes/main_view.gd" id="2_f0avc"]
+[ext_resource type="Script" uid="uid://cufofcsjjohvp" path="res://scenes/fps_counter.gd" id="6_clmei"]
+[ext_resource type="Script" uid="uid://cnvk8etxmos3" path="res://scenes/overlay.gd" id="6_jgbbk"]
+[ext_resource type="Script" uid="uid://1vl4oxlp6daf" path="res://scenes/sub_viewport.gd" id="6_sqg8x"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("world")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rnrlo")
+world = NodePath("main_view/SubViewport/world")
+
+[node name="main_view" type="SubViewportContainer" parent="."]
+physics_interpolation_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_f0avc")
+
+[node name="SubViewport" type="SubViewport" parent="main_view"]
+disable_3d = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="world" type="Node2D" parent="main_view/SubViewport"]
+
+[node name="map" parent="main_view/SubViewport/world" node_paths=PackedStringArray("view_control") instance=ExtResource("2_ag2uy")]
+view_control = NodePath("../../../..")
+
+[node name="overlay" type="SubViewportContainer" parent="."]
+physics_interpolation_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+script = ExtResource("6_jgbbk")
+
+[node name="SubViewport" type="SubViewport" parent="overlay"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+script = ExtResource("6_sqg8x")
+
+[node name="Camera2D" type="Camera2D" parent="overlay/SubViewport"]
+position = Vector2(50, 100)
+ignore_rotation = false
+
+[node name="fps_counter" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_clmei")

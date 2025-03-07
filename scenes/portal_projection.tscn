@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duy8rkfbhmqhk"]
+
+[ext_resource type="Script" uid="uid://b5ev0h0ldpdk" path="res://scenes/portal_projection.gd" id="1_d3b3k"]
+
+[node name="portal_projection" type="Polygon2D"]
+script = ExtResource("1_d3b3k")
