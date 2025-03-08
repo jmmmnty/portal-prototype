@@ -281,10 +281,4 @@ func teleport_object( node : Mob ) -> void:
 	node.set_copy_position()
 	node.apply_camera_rotation( rotation_transform )
 	node.near_portal = other_side
-	# A bit hacky way to force the other viewport to render immediately now
-	# As it may not not be yet in view
-	other_side.viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	other_side.viewport.set_deferred( "render_target_update_mode", SubViewport.UPDATE_ALWAYS  )
-	viewport.set_deferred( "render_target_update_mode", SubViewport.UPDATE_ALWAYS  )
 	print( "TELE DONE")

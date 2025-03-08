@@ -24,6 +24,7 @@ default_color = Color(0.966667, 0, 1, 1)
 [node name="SubViewport" type="SubViewport" parent="."]
 snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
+render_target_update_mode = 3
 script = ExtResource("2_7t6qk")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport"]

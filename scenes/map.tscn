@@ -47,7 +47,7 @@ other_side = NodePath("../Portal3")
 point_right = Vector2i(100, 0)
 
 [node name="Player" parent="." instance=ExtResource("5_2klcf")]
-position = Vector2(713, 403)
+position = Vector2(1591, 102)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 update_rotation = false
