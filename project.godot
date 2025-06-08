@@ -25,6 +25,10 @@ Global="*res://scenes/global.tscn"
 gdscript/warnings/untyped_declaration=1
 gdscript/warnings/integer_division=0
 
+[editor]
+
+movie_writer/movie_file="C:/godot/movie/recording.avi"
+
 [input]
 
 move_down={
@@ -63,6 +67,7 @@ mouse_left={
 [physics]
 
 2d/run_on_separate_thread=true
+2d/default_gravity=0.0
 
 [rendering]
 

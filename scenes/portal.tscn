@@ -1,34 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://xbo3ki3dyrf3"]
+[gd_scene load_steps=2 format=3 uid="uid://xbo3ki3dyrf3"]
 
 [ext_resource type="Script" uid="uid://c1kctx3daespq" path="res://scenes/portal.gd" id="1_ikb8n"]
-[ext_resource type="Script" uid="uid://dxj4hw2nsvjgo" path="res://scenes/portal_subview.gd" id="2_7t6qk"]
 
 [node name="Portal" type="Area2D"]
 collision_layer = 16
 collision_mask = 16
+monitoring = false
 script = ExtResource("1_ikb8n")
 point_right = Vector2i(0, 100)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 0, 100, 0, 100)
-
-[node name="seen_area" type="Polygon2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.109804)
-
-[node name="editor_vis" type="Line2D" parent="."]
-points = PackedVector2Array(5, 5, -5, -5, 0, 0, 5, -5, -5, 5, 0, 0, 0, 100)
-width = 1.0
-default_color = Color(0.966667, 0, 1, 1)
-
-[node name="SubViewport" type="SubViewport" parent="."]
-snap_2d_transforms_to_pixel = true
-canvas_item_default_texture_filter = 0
-render_target_update_mode = 3
-script = ExtResource("2_7t6qk")
-
-[node name="Camera2D" type="Camera2D" parent="SubViewport"]
-anchor_mode = 0
-ignore_rotation = false
-process_callback = 0
-editor_draw_limits = true

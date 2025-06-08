@@ -12,6 +12,7 @@ radius = 112.46
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component")]
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_7axq7")
 input_component = NodePath("InputComponent")
 is_player = true
