@@ -24,6 +24,16 @@ func get_portals() -> void:
 			portals.append( child )
 		#child.get_portals()
 
+## Reursively finds all walls in the map
+## Returns array of walls
+func get_walls( node : Node = self ) -> Array[solid_wall]:
+	var ret : Array[solid_wall] = []
+	for child in node.get_children():
+		if child is solid_wall:
+			ret.append( child )
+		ret.append_array( get_walls( child ) )
+	return ret
+
 ## Updates portal shadows to match the camera
 func update_portals( camera_pos : Vector2 ) -> void:
 	for portal : portal_plane in portals:
@@ -33,6 +43,7 @@ func update_portals( camera_pos : Vector2 ) -> void:
 		previous_camera_pos = camera_pos
 		view_control.sort_projections( camera_pos )
 		pass
+	view_control.update_occlusion()
 	
 	pass
 

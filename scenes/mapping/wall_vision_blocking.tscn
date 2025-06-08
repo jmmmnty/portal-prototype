@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cumopveaerhhu"]
+
+[ext_resource type="Script" uid="uid://ch1nxmf4hv8qb" path="res://scenes/mapping/wall_vision_blocking.gd" id="1_cx45c"]
+
+[node name="wall_vision_blocking" type="Polygon2D"]
+script = ExtResource("1_cx45c")

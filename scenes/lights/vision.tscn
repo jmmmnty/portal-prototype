@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy4my6x5hjqo7"]
+
+[sub_resource type="Gradient" id="Gradient_iu53m"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_texgc"]
+gradient = SubResource("Gradient_iu53m")
+width = 1500
+height = 1500
+fill_from = Vector2(0.5, 0.5)
+
+[node name="PointLight2D" type="PointLight2D"]
+range_item_cull_mask = 16
+shadow_enabled = true
+shadow_item_cull_mask = 17
+texture = SubResource("GradientTexture2D_texgc")
