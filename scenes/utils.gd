@@ -55,3 +55,23 @@ static func integer_polygon( polygon : PackedVector2Array ) -> PackedVector2Arra
 	for point in polygon:
 		int_polygon.append( round( point ) )
 	return int_polygon
+
+## Returns polygon of specified size
+## The polygon is centered to its area
+static func centered_polygon( size : Vector2 ) -> PackedVector2Array:
+	var polygon : PackedVector2Array
+	polygon.resize(4)
+	polygon[0] = Vector2( 0, 0 )
+	polygon[1] = Vector2( size.x, 0 )
+	polygon[2] = Vector2( size.x + 1, size.y  )
+	polygon[3] = Vector2( 0, size.y  )
+	
+	var offset : Vector2 = Vector2( -size.x / 2, -size.y / 2 )
+	polygon = Transform2D( 0, offset ) * polygon
+	
+	return polygon
+
+static func print_config( config : ConfigFile )->void:
+	for section in config.get_sections():
+		for key in config.get_section_keys( section ):
+			print( "%s/%s = %s" % [ section, key, str( config.get_value(section, key) ) ] )

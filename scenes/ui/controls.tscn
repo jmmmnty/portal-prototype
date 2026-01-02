@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://qube0i1q7p4y"]
+
+[ext_resource type="Script" uid="uid://bclyb2gw1tanx" path="res://scenes/ui/controls.gd" id="1_fp6ub"]
+[ext_resource type="PackedScene" uid="uid://cikesg17egv1s" path="res://scenes/ui/settings/settings_input.tscn" id="2_wqeuo"]
+
+[node name="Controls" type="VBoxContainer"]
+offset_right = 76.0
+offset_bottom = 136.0
+script = ExtResource("1_fp6ub")
+metadata/_tab_index = 2
+
+[node name="move_left" parent="." instance=ExtResource("2_wqeuo")]
+layout_mode = 2
+action = &"move_left"
+
+[node name="move_right" parent="." instance=ExtResource("2_wqeuo")]
+layout_mode = 2
+action = &"move_right"
+
+[node name="move_up" parent="." instance=ExtResource("2_wqeuo")]
+layout_mode = 2
+action = &"move_up"
+
+[node name="move_down" parent="." instance=ExtResource("2_wqeuo")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "                       Exit = Esc"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "        Open menu = F2"

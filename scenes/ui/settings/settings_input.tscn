@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cikesg17egv1s"]
+
+[ext_resource type="Script" uid="uid://dwfh28ndmkhu5" path="res://scenes/ui/settings/settings_input.gd" id="1_0f2tg"]
+
+[node name="settings_input" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0f2tg")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "move_left"
+horizontal_alignment = 2
+
+[node name="space" type="Label" parent="."]
+layout_mode = 2
+text = " = "
+
+[node name="bound" type="Label" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "x"
+
+[node name="rebind" type="Button" parent="."]
+layout_mode = 2
+text = "Change"
+
+[connection signal="pressed" from="rebind" to="." method="_on_rebind_pressed"]
