@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://lfu64wegg8ag"]
+
+[ext_resource type="Texture2D" uid="uid://cgfxdb5680dwj" path="res://scenes/map/map_pieces/black_noise_texture.tres" id="1_03uki"]
+
+[node name="arrow_ curved" type="Polygon2D"]
+color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+texture = ExtResource("1_03uki")
+polygon = PackedVector2Array(0, -8, 40, -8, 56, 8, 56, 32, 64, 32, 48, 48, 32, 32, 40, 32, 40, 16, 32, 8, 0, 8)

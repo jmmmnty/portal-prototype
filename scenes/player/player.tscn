@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://cok04r5y7s1ug"]
+
+[ext_resource type="Script" uid="uid://cqfyi6yk58due" path="res://scenes/player/player.gd" id="1_7axq7"]
+[ext_resource type="Texture2D" uid="uid://buja7iqn1v1ay" path="res://graphics/player.png" id="2_yicsx"]
+[ext_resource type="PackedScene" uid="uid://byxlq7bbvbgk1" path="res://scenes/player/input_component.tscn" id="4_h8sbs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7iqnj"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q634b"]
+radius = 112.46
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component")]
+motion_mode = 1
+wall_min_slide_angle = 0.08726646
+script = ExtResource("1_7axq7")
+input_component = NodePath("InputComponent")
+is_player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7iqnj")
+debug_color = Color(0, 0.5950001, 0.7, 0)
+
+[node name="visuals" type="Polygon2D" parent="."]
+clip_children = 1
+polygon = PackedVector2Array(-20, 20, -20, -20, 20, -20, 20, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="visuals"]
+texture = ExtResource("2_yicsx")
+
+[node name="ClippedCollision" type="CollisionPolygon2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(-32, -8, -8, -48, 40, -40, 64, 16, -8, 48, -40, 24)
+disabled = true
+
+[node name="debug_vis" type="Polygon2D" parent="ClippedCollision"]
+visible = false
+
+[node name="RemoteCollision" type="CollisionPolygon2D" parent="."]
+modulate = Color(0, 1, 0.14999986, 1)
+polygon = PackedVector2Array(-40, -48, -24, -24, -40, 0, -80, -24, -64, -56)
+disabled = true
+
+[node name="debug_vis" type="Polygon2D" parent="RemoteCollision"]
+visible = false
+polygon = PackedVector2Array(32, -48, 40, -24, 72, -24, 56, -56)
+
+[node name="PortalProximity" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalProximity"]
+shape = SubResource("CircleShape2D_q634b")
+debug_color = Color(0, 0.7, 0.2450001, 0)
+
+[node name="InputComponent" parent="." instance=ExtResource("4_h8sbs")]
+
+[connection signal="area_entered" from="PortalProximity" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PortalProximity" to="." method="_on_area_2d_area_exited"]
