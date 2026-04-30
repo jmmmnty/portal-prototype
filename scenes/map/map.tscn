@@ -912,7 +912,7 @@ position = Vector2(1665, 1201)
 texture = SubResource("CanvasTexture_b56te")
 
 [node name="Ball3" parent="." unique_id=1158334685 instance=ExtResource("8_sqgf4")]
-position = Vector2(1815, 1037)
+position = Vector2(1374, 1351)
 tint_color = Color(0.29000002, 0.7278333, 1, 1)
 
 [node name="Ball4" parent="." unique_id=2025772758 instance=ExtResource("8_sqgf4")]
