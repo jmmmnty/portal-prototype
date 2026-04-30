@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://dvl5tlfqp1og0"]
+
+[ext_resource type="AudioStream" uid="uid://b4626sifjlpd8" path="res://audio/collisions/hit2.wav" id="1_ax4qq"]
+
+[resource]
+random_pitch = 1.0656005
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("1_ax4qq")

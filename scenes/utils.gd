@@ -56,7 +56,7 @@ static func integer_polygon( polygon : PackedVector2Array ) -> PackedVector2Arra
 		int_polygon.append( round( point ) )
 	return int_polygon
 
-## Returns polygon of specified size
+## Returns polygon rectangle of specified size
 ## The polygon is centered to its area
 static func centered_polygon( size : Vector2 ) -> PackedVector2Array:
 	var polygon : PackedVector2Array
@@ -71,7 +71,40 @@ static func centered_polygon( size : Vector2 ) -> PackedVector2Array:
 	
 	return polygon
 
+static func create_square_polygon( width : int ) -> PackedVector2Array:
+	return centered_polygon( Vector2(width, width) )
+
+## Creates centered circle polygon
+static func circle_polygon( sides : int, radius : int ) -> PackedVector2Array:
+	assert( sides > 2, "Must have at least three sides in a polygon")
+	var polygon : PackedVector2Array
+	polygon.resize(sides)
+
+	for i in range( sides ):
+		var angle : float = i * PI * 2 / sides
+		polygon[i] = Vector2.from_angle( angle ) * radius
+	return polygon
+
 static func print_config( config : ConfigFile )->void:
 	for section in config.get_sections():
 		for key in config.get_section_keys( section ):
 			print( "%s/%s = %s" % [ section, key, str( config.get_value(section, key) ) ] )
+
+
+static func is_shorter_collision( col_a: KinematicCollision2D, col_b : KinematicCollision2D ) -> bool:
+	# First to compare must exist
+	assert( col_a )
+	
+	if not col_b:
+		return true
+	
+	return col_a.get_travel().length_squared() < col_b.get_travel().length_squared()
+
+
+static func rotate_angular_velocity( angular_velocity : Vector3, rotation : Transform2D ) -> Vector3:
+	var velocity : Vector2 = Vector2( angular_velocity.x, angular_velocity.y )
+	velocity = rotation * velocity
+	return Vector3( velocity.x, velocity.y, angular_velocity.z )
+
+static func vec3_to_2( vec3 : Vector3 ) -> Vector2:
+	return Vector2( vec3.x, vec3.z )

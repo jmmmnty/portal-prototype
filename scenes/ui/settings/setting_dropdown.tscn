@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://divdxdv3qxqci"]
+[gd_scene format=3 uid="uid://divdxdv3qxqci"]
 
 [ext_resource type="Script" uid="uid://bxg1m5i4si4vn" path="res://scenes/ui/settings/setting_dropdown.gd" id="1_mx6bk"]
 
-[node name="SettingInt" type="HBoxContainer"]
+[node name="SettingInt" type="HBoxContainer" unique_id=570309699]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -13,24 +13,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mx6bk")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=807388004]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=461746502]
 layout_mode = 2
 focus_mode = 0
 text = "?"
 
-[node name="spacer" type="Control" parent="."]
+[node name="spacer" type="Control" parent="." unique_id=1540875807]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="OptionButton" type="OptionButton" parent="." unique_id=1759803867]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="spacer2" type="Control" parent="."]
+[node name="spacer2" type="Control" parent="." unique_id=578221859]
 layout_mode = 2
 size_flags_horizontal = 3

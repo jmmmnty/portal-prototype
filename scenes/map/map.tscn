@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d13cxj04vqj7f"]
+[gd_scene format=3 uid="uid://d13cxj04vqj7f"]
 
 [ext_resource type="Script" uid="uid://duipso8ysgimf" path="res://scenes/map/map.gd" id="1_expfh"]
 [ext_resource type="Texture2D" uid="uid://d24ec70x6n7cg" path="res://scenes/map/map_pieces/floor_texture.tres" id="3_sqgf4"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ddwsy8rsc0ex4" path="res://scenes/map/map_pieces/arrow.tscn" id="7_04w0f"]
 [ext_resource type="Script" uid="uid://c1kctx3daespq" path="res://scenes/portal/portal.gd" id="7_jh32y"]
 [ext_resource type="Script" uid="uid://ch1nxmf4hv8qb" path="res://scenes/mapping/wall_vision_blocking.gd" id="7_nakos"]
+[ext_resource type="PackedScene" uid="uid://d2rgu3pfx76k8" path="res://scenes/mobs/ball.tscn" id="8_sqgf4"]
+[ext_resource type="Texture2D" uid="uid://bimp4y2ecc7ko" path="res://graphics/ball_noise_tex/ball1.tres" id="9_vvrx0"]
+[ext_resource type="Texture2D" uid="uid://vpnup8kuapve" path="res://graphics/ball_normal.png" id="10_f17u5"]
 
 [sub_resource type="Gradient" id="Gradient_vvrx0"]
 colors = PackedColorArray(0.32, 0.32, 0.32, 1, 0.62, 0.62, 0.62, 1)
@@ -60,200 +63,199 @@ noise = SubResource("FastNoiseLite_jcaow")
 color_ramp = SubResource("Gradient_fcby6")
 seamless = true
 
-[node name="map" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+[sub_resource type="CanvasTexture" id="CanvasTexture_b56te"]
+diffuse_texture = ExtResource("9_vvrx0")
+normal_texture = ExtResource("10_f17u5")
+
+[node name="map" type="Node2D" unique_id=1219620748 node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_expfh")
 spawn_point = NodePath("player_spawn")
 
-[node name="ground" type="Polygon2D" parent="."]
+[node name="ground" type="Polygon2D" parent="." unique_id=299715587]
 texture_repeat = 2
 position = Vector2(320, -88)
 texture = SubResource("NoiseTexture2D_b56te")
 polygon = PackedVector2Array(0, 0, 0, 8192, 8192, 8192, 8192, 0)
 
-[node name="Polygon2D" type="Polygon2D" parent="ground"]
+[node name="Polygon2D" type="Polygon2D" parent="ground" unique_id=1556111374]
 color = Color(0.984, 0.88, 1, 1)
 texture = ExtResource("3_sqgf4")
 polygon = PackedVector2Array(1384, 2528, 1352, 2408, 1296, 2328, 1288, 2272, 1328, 2256, 1632, 2256, 1632, 2096, 1344, 2096, 1248, 2128, 1192, 2200, 1176, 2312, 1208, 2424, 1256, 2488, 1248, 2640, 1216, 2736, 1368, 2736)
 
-[node name="walls" type="Node2D" parent="."]
+[node name="walls" type="Node2D" parent="." unique_id=669806171]
 
-[node name="start_room" type="Node2D" parent="."]
+[node name="start_room" type="Node2D" parent="." unique_id=85759355]
 position = Vector2(1008, 1104)
 
-[node name="room_floor2" type="Polygon2D" parent="start_room"]
+[node name="room_floor2" type="Polygon2D" parent="start_room" unique_id=940268419]
 texture_repeat = 2
 color = Color(0.57945776, 0.9370909, 0.99999994, 1)
 texture = ExtResource("3_sqgf4")
 polygon = PackedVector2Array(528, -144, 144, -144, 144, -96, 432, 432, 528, 528)
 
-[node name="room_floor" type="Polygon2D" parent="start_room"]
+[node name="room_floor" type="Polygon2D" parent="start_room" unique_id=1829846649]
 texture_repeat = 2
 texture = ExtResource("3_sqgf4")
 polygon = PackedVector2Array(432, 0, 144, -144, -96, -96, -96, 528, 528, 528, 432, 432)
 
-[node name="solid_wall7" type="Polygon2D" parent="start_room"]
+[node name="solid_wall7" type="Polygon2D" parent="start_room" unique_id=781736355]
 polygon = PackedVector2Array(0, 0, 144, 0, 144, 48, 96, 48, 48, 96, 48, 144, 0, 144)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall9" type="Polygon2D" parent="start_room"]
+[node name="solid_wall9" type="Polygon2D" parent="start_room" unique_id=461690898]
 position = Vector2(432, 0)
 rotation = 1.5707964
 polygon = PackedVector2Array(0, 0, 144, 0, 144, 48, 96, 48, 48, 96, 48, 144, 0, 144)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall10" type="Polygon2D" parent="start_room"]
+[node name="solid_wall10" type="Polygon2D" parent="start_room" unique_id=203699540]
 position = Vector2(432, 432)
 rotation = -3.1415925
 polygon = PackedVector2Array(0, 0, 144, 0, 144, 48, 96, 48, 48, 96, 48, 144, 0, 144)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall11" type="Polygon2D" parent="start_room"]
+[node name="solid_wall11" type="Polygon2D" parent="start_room" unique_id=435054625]
 position = Vector2(0, 432)
 rotation = -1.5707964
 polygon = PackedVector2Array(0, 0, 144, 0, 144, 48, 96, 48, 48, 96, 48, 144, 0, 144)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall" type="Polygon2D" parent="start_room"]
+[node name="solid_wall" type="Polygon2D" parent="start_room" unique_id=739177899]
 position = Vector2(-1008, -1104)
 polygon = PackedVector2Array(912, 1008, 1152, 1008, 1152, 960, 912, 960)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall2" type="Polygon2D" parent="start_room"]
+[node name="solid_wall2" type="Polygon2D" parent="start_room" unique_id=1771985465]
 position = Vector2(-624, -432)
 polygon = PackedVector2Array(912, 1008, 1152, 1008, 1152, 960, 912, 960)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="portal_plane" type="Area2D" parent="start_room" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane" type="Area2D" parent="start_room" unique_id=2064965817 node_paths=PackedStringArray("other_side")]
 position = Vector2(48, 16)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane2")
 point_right = Vector2i(0, -128)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane2" type="Area2D" parent="start_room" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane2" type="Area2D" parent="start_room" unique_id=623939397 node_paths=PackedStringArray("other_side")]
 position = Vector2(384, 416)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane")
 point_right = Vector2i(0, 128)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="Sprite2D" type="Sprite2D" parent="start_room"]
+[node name="Sprite2D" type="Sprite2D" parent="start_room" unique_id=82113790]
 position = Vector2(216, 208)
 texture = ExtResource("4_6ak8e")
 
-[node name="solid_wall3" type="Polygon2D" parent="start_room"]
+[node name="solid_wall3" type="Polygon2D" parent="start_room" unique_id=381050478]
 polygon = PackedVector2Array(-96, 424, -96, 528, 312, 528, 312, 576, -144, 576, -144, 424)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall4" type="Polygon2D" parent="start_room"]
+[node name="solid_wall4" type="Polygon2D" parent="start_room" unique_id=276552228]
 polygon = PackedVector2Array(-96, 456, -96, -96, -72, -96, -72, -144, -144, -144, -144, 456)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="arrow_ curved2" parent="start_room" instance=ExtResource("6_jcaow")]
+[node name="arrow_ curved2" parent="start_room" unique_id=514089606 instance=ExtResource("6_jcaow")]
 position = Vector2(0, 488)
 rotation = 3.1415927
 
-[node name="arrow_ curved3" parent="start_room" instance=ExtResource("6_jcaow")]
+[node name="arrow_ curved3" parent="start_room" unique_id=1917767874 instance=ExtResource("6_jcaow")]
 position = Vector2(-56, -8)
 rotation = -1.5707964
 
-[node name="arrow" parent="start_room" instance=ExtResource("7_04w0f")]
+[node name="arrow" parent="start_room" unique_id=1747808273 instance=ExtResource("7_04w0f")]
 position = Vector2(-48, 200)
 
-[node name="arrow2" parent="start_room" instance=ExtResource("7_04w0f")]
+[node name="arrow2" parent="start_room" unique_id=472907262 instance=ExtResource("7_04w0f")]
 position = Vector2(200, 480)
 rotation = -1.5707964
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="start_room"]
-self_modulate = Color(0.2666669, 0, 1, 1)
-position = Vector2(400, 40)
-polygon = PackedVector2Array(16, -24, -16, -24, -64, 16, -8, 64, 40, 0)
-
-[node name="pillars" type="Node2D" parent="."]
+[node name="pillars" type="Node2D" parent="." unique_id=388303512]
 position = Vector2(1536, 960)
 
-[node name="carpet3" type="Polygon2D" parent="pillars"]
+[node name="carpet3" type="Polygon2D" parent="pillars" unique_id=2084586695]
 position = Vector2(480, 568)
 texture = SubResource("NoiseTexture2D_vvrx0")
 polygon = PackedVector2Array(-672, -856, -600, -928, -696, -1024, -944, -1024, -944, -904, -720, -904)
 
-[node name="carpet4" type="Polygon2D" parent="pillars"]
+[node name="carpet4" type="Polygon2D" parent="pillars" unique_id=1032379831]
 position = Vector2(-448, 1128)
 rotation = 1.5707964
 texture = SubResource("NoiseTexture2D_vvrx0")
 polygon = PackedVector2Array(-696, -1024, -944, -1024, -944, -904, -696.0001, -903.9999)
 
-[node name="carpet5" type="Polygon2D" parent="pillars"]
+[node name="carpet5" type="Polygon2D" parent="pillars" unique_id=523634448]
 position = Vector2(-1752, 336)
 rotation = 1.5707964
 texture = SubResource("NoiseTexture2D_vvrx0")
 polygon = PackedVector2Array(-696, -1024, -944, -1024, -944, -904, -696.0001, -903.9999)
 
-[node name="solid_wall" type="Polygon2D" parent="pillars"]
+[node name="solid_wall" type="Polygon2D" parent="pillars" unique_id=1632579812]
 position = Vector2(-168, -200)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall2" type="Polygon2D" parent="pillars"]
+[node name="solid_wall2" type="Polygon2D" parent="pillars" unique_id=1384017960]
 position = Vector2(64, -304)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall3" type="Polygon2D" parent="pillars"]
+[node name="solid_wall3" type="Polygon2D" parent="pillars" unique_id=1546853820]
 position = Vector2(160, -40)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall11" type="Polygon2D" parent="pillars"]
+[node name="solid_wall11" type="Polygon2D" parent="pillars" unique_id=391317762]
 position = Vector2(216, -552)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, 0, 48, 168, 48, 168, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall12" type="Polygon2D" parent="pillars"]
+[node name="solid_wall12" type="Polygon2D" parent="pillars" unique_id=1771442499]
 position = Vector2(-224, -696)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(-88, 0, -88, 48, 560, 48, 560, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall13" type="Polygon2D" parent="pillars"]
+[node name="solid_wall13" type="Polygon2D" parent="pillars" unique_id=306437795]
 position = Vector2(-464, -696)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(-16, -144, -16, 48, 80, 48, 80, 0, 32, 0, 32, -96, 224, -96, 224, 32, 272, 32, 272, -144, 224, -144)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall4" type="Polygon2D" parent="pillars"]
+[node name="solid_wall4" type="Polygon2D" parent="pillars" unique_id=753459453]
 position = Vector2(360, 152)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall14" type="Polygon2D" parent="pillars"]
+[node name="solid_wall14" type="Polygon2D" parent="pillars" unique_id=1136338943]
 position = Vector2(552, -24)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -32, 0, -32, 120, 0, 120, 0, 168, -96, 168, -96, 48, -96, -48, 0, -48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall15" type="Polygon2D" parent="pillars"]
+[node name="solid_wall15" type="Polygon2D" parent="pillars" unique_id=1957846695]
 position = Vector2(352, 1200)
 rotation = 3.1415927
 texture = SubResource("NoiseTexture2D_sqgf4")
@@ -261,7 +263,7 @@ polygon = PackedVector2Array(0, 0, -32, 0, -32, 120, 0, 120, 0, 168, -96, 168, -
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall16" type="Polygon2D" parent="pillars"]
+[node name="solid_wall16" type="Polygon2D" parent="pillars" unique_id=894946931]
 position = Vector2(352, 1200)
 rotation = 3.1415927
 texture = SubResource("NoiseTexture2D_sqgf4")
@@ -269,7 +271,7 @@ polygon = PackedVector2Array(256.00012, 119.99988, -47.999878, 119.99988, -47.99
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall17" type="Polygon2D" parent="pillars"]
+[node name="solid_wall17" type="Polygon2D" parent="pillars" unique_id=1305556468]
 position = Vector2(352, 1368)
 rotation = 3.1415927
 texture = SubResource("NoiseTexture2D_sqgf4")
@@ -277,609 +279,651 @@ polygon = PackedVector2Array(256.00012, 119.99988, -47.999878, 119.99988, -47.99
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall5" type="Polygon2D" parent="pillars"]
-position = Vector2(168, 336)
+[node name="solid_wall21" type="Polygon2D" parent="pillars" unique_id=475642248]
+position = Vector2(835, 1542)
+rotation = 3.1415927
+texture = SubResource("NoiseTexture2D_sqgf4")
+polygon = PackedVector2Array(478, -146, 443, -196, 138, 131, 171, 638, 229, 635, 252.86401, 226.67328, 256.00012, 167.99988)
+script = ExtResource("7_nakos")
+metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
+
+[node name="solid_wall20" type="Polygon2D" parent="pillars" unique_id=175033136]
+position = Vector2(-211, 1465)
+rotation = 3.1415927
+texture = SubResource("NoiseTexture2D_sqgf4")
+polygon = PackedVector2Array(82, -277, 33, -225, 104, 278, -212.99988, 533.0001, -232.99988, 559.0001, -180.99988, 573.0001, 183, 305)
+script = ExtResource("7_nakos")
+metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
+
+[node name="solid_wall5" type="Polygon2D" parent="pillars" unique_id=1873220335]
+position = Vector2(184, 456)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall6" type="Polygon2D" parent="pillars"]
+[node name="solid_wall6" type="Polygon2D" parent="pillars" unique_id=696831362]
 position = Vector2(360, 552)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall7" type="Polygon2D" parent="pillars"]
+[node name="solid_wall7" type="Polygon2D" parent="pillars" unique_id=240763583]
 position = Vector2(160, 744)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall8" type="Polygon2D" parent="pillars"]
+[node name="solid_wall8" type="Polygon2D" parent="pillars" unique_id=1339925821]
 position = Vector2(-448, -296)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, -48, 48, 0, 96, 48, 48)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall9" type="Polygon2D" parent="pillars"]
+[node name="solid_wall9" type="Polygon2D" parent="pillars" unique_id=542389761]
 position = Vector2(-672, -552)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, 0, 0, 576, 48, 576, 48, 48, 744, 48, 744, 0, 48, 0, 48, -104, 0, -104)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall10" type="Polygon2D" parent="pillars"]
+[node name="solid_wall10" type="Polygon2D" parent="pillars" unique_id=708920784]
 position = Vector2(-48, 720)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(0, -16, 0, 216, 48, 216, 720, 216, 720, 168, 48, 168, 48, -40)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall18" type="Polygon2D" parent="pillars"]
+[node name="solid_wall18" type="Polygon2D" parent="pillars" unique_id=2142714298]
 position = Vector2(-48, 720)
 texture = SubResource("NoiseTexture2D_sqgf4")
 polygon = PackedVector2Array(648, 144, 648, 168, 648, 216, 720, 216, 720, 168, 824, -224, 824, -952, 656, -1416, 328, -1416, 320, -1368, 576, -1368, 744, -952, 744, -232)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="hall_right" type="Area2D" parent="pillars" node_paths=PackedStringArray("other_side")]
+[node name="hall_right" type="Area2D" parent="pillars" unique_id=175287424 node_paths=PackedStringArray("other_side")]
 position = Vector2(312, -536)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../hall_left")
 point_right = Vector2i(0, -128)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="hall_left" type="Area2D" parent="pillars" node_paths=PackedStringArray("other_side")]
+[node name="hall_left" type="Area2D" parent="pillars" unique_id=1095528592 node_paths=PackedStringArray("other_side")]
 position = Vector2(-448, -536)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../hall_right")
 point_right = Vector2i(0, -128)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="entry_1" type="Area2D" parent="pillars" node_paths=PackedStringArray("other_side")]
+[node name="entry_1" type="Area2D" parent="pillars" unique_id=1345585159 node_paths=PackedStringArray("other_side")]
 position = Vector2(528, -40)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../entry_2")
 point_right = Vector2i(0, 160)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="entry_2" type="Area2D" parent="pillars" node_paths=PackedStringArray("other_side")]
+[node name="entry_2" type="Area2D" parent="pillars" unique_id=1303705852 node_paths=PackedStringArray("other_side")]
 position = Vector2(368, 1064)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../entry_1")
 point_right = Vector2i(0, 160)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="arrow" parent="pillars" instance=ExtResource("7_04w0f")]
+[node name="arrow" parent="pillars" unique_id=1145457430 instance=ExtResource("7_04w0f")]
 position = Vector2(176, -600)
 rotation = 1.5707964
 
-[node name="arrow2" parent="pillars" instance=ExtResource("7_04w0f")]
+[node name="arrow2" parent="pillars" unique_id=1434664529 instance=ExtResource("7_04w0f")]
 position = Vector2(-296, -600)
 rotation = 1.5707964
 
-[node name="solid_wall19" type="Polygon2D" parent="pillars"]
+[node name="solid_wall19" type="Polygon2D" parent="pillars" unique_id=1990164028]
 position = Vector2(-672, -288)
 polygon = PackedVector2Array(-408, 0, -408, -552, 192, -552, 192, -504, 240, -504, 240, -672, -456, -616, -456, 48, 24, 40, 24, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="player_spawn" type="Marker2D" parent="."]
-position = Vector2(1211, 1289)
+[node name="player_spawn" type="Marker2D" parent="." unique_id=569872143]
+position = Vector2(1240, 1296)
 gizmo_extents = 50.0
 
-[node name="overlap_1" type="Node2D" parent="."]
+[node name="overlap_1" type="Node2D" parent="." unique_id=758508044]
 position = Vector2(1296, 2640)
 
-[node name="floor" type="Polygon2D" parent="overlap_1"]
+[node name="floor" type="Polygon2D" parent="overlap_1" unique_id=1914268475]
 color = Color(1.353256, 0.27203575, 0.27203575, 0.34901962)
 texture = ExtResource("3_sqgf4")
 polygon = PackedVector2Array(-16, 16, -16, 952, 624, 952, 624, 16)
 
-[node name="pillars" type="Node2D" parent="overlap_1"]
+[node name="pillars" type="Node2D" parent="overlap_1" unique_id=237916412]
 
-[node name="solid_wall" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall" type="Polygon2D" parent="overlap_1/pillars" unique_id=1754247987]
 polygon = PackedVector2Array(240, 0, 240, 48, 0, 48, 0, 936, 600, 936, 600, 48, 360, 48, 360, 0, 648, 0, 648, 984, -48, 984, -48, 0)
 uv = PackedVector2Array(240, 0, 240, 48, 0, 48, 0, 672, 600, 672, 600, 48, 360, 48, 360, 0, 648, 0, 648, 672, 648, 720, -48, 720, -48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall2" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall2" type="Polygon2D" parent="overlap_1/pillars" unique_id=1058418451]
 position = Vector2(96, 120)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall3" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall3" type="Polygon2D" parent="overlap_1/pillars" unique_id=404304903]
 position = Vector2(96, 240)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall4" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall4" type="Polygon2D" parent="overlap_1/pillars" unique_id=1662656486]
 position = Vector2(96, 360)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall5" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall5" type="Polygon2D" parent="overlap_1/pillars" unique_id=2036291680]
 position = Vector2(96, 480)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall6" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall6" type="Polygon2D" parent="overlap_1/pillars" unique_id=213316342]
 position = Vector2(456, 120)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall7" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall7" type="Polygon2D" parent="overlap_1/pillars" unique_id=1258917838]
 position = Vector2(456, 240)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall8" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall8" type="Polygon2D" parent="overlap_1/pillars" unique_id=204984025]
 position = Vector2(456, 360)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall9" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall9" type="Polygon2D" parent="overlap_1/pillars" unique_id=1077335254]
 position = Vector2(456, 480)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall10" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall10" type="Polygon2D" parent="overlap_1/pillars" unique_id=1031656800]
 position = Vector2(456, 600)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall11" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall11" type="Polygon2D" parent="overlap_1/pillars" unique_id=1792974390]
 position = Vector2(456, 720)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall12" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall12" type="Polygon2D" parent="overlap_1/pillars" unique_id=570693691]
 position = Vector2(96, 600)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall13" type="Polygon2D" parent="overlap_1/pillars"]
+[node name="solid_wall13" type="Polygon2D" parent="overlap_1/pillars" unique_id=960186821]
 position = Vector2(96, 720)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="items" type="Node2D" parent="overlap_1"]
+[node name="items" type="Node2D" parent="overlap_1" unique_id=411223569]
 
-[node name="Polygon2D" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D" type="Polygon2D" parent="overlap_1/items" unique_id=158822788]
 position = Vector2(-8, 192)
 color = Color(0.27999997, 1, 0.868, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D2" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D2" type="Polygon2D" parent="overlap_1/items" unique_id=271950901]
 position = Vector2(-8, 312)
 color = Color(0.2784314, 0.7137255, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D3" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D3" type="Polygon2D" parent="overlap_1/items" unique_id=492240345]
 position = Vector2(-8, 432)
 color = Color(0.664, 0.27999997, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D4" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D4" type="Polygon2D" parent="overlap_1/items" unique_id=204156663]
 position = Vector2(-8, 552)
 color = Color(1, 0.27999997, 0.29199982, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D5" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D5" type="Polygon2D" parent="overlap_1/items" unique_id=1781331766]
 position = Vector2(-8, 672)
 color = Color(1, 1, 0.27999997, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D6" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D6" type="Polygon2D" parent="overlap_1/items" unique_id=317288965]
 position = Vector2(600, 672)
 color = Color(0.27999997, 1, 0.53200006, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D7" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D7" type="Polygon2D" parent="overlap_1/items" unique_id=1083097453]
 position = Vector2(600, 552)
 color = Color(0.27999997, 0.976, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D8" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D8" type="Polygon2D" parent="overlap_1/items" unique_id=1287058282]
 position = Vector2(600, 432)
 color = Color(0.2784314, 0.7137255, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D9" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D9" type="Polygon2D" parent="overlap_1/items" unique_id=1201634180]
 position = Vector2(600, 312)
 color = Color(0.55600005, 1, 0.27999997, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D10" type="Polygon2D" parent="overlap_1/items"]
+[node name="Polygon2D10" type="Polygon2D" parent="overlap_1/items" unique_id=742114233]
 position = Vector2(600, 192)
 color = Color(0.976, 0.27999997, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="portals" type="Node2D" parent="overlap_1"]
+[node name="portals" type="Node2D" parent="overlap_1" unique_id=261072889]
 
-[node name="portal_plane" type="Area2D" parent="overlap_1/portals" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane" type="Area2D" parent="overlap_1/portals" unique_id=541520470 node_paths=PackedStringArray("other_side")]
 position = Vector2(-16, 144)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../../../overlap_2/portals/portal_plane")
 point_right = Vector2i(130, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane3" type="Area2D" parent="overlap_1/portals" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane3" type="Area2D" parent="overlap_1/portals" unique_id=1055973853 node_paths=PackedStringArray("other_side")]
 position = Vector2(-16, 744)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../../../overlap_2/portals/portal_plane3")
 point_right = Vector2i(130, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane2" type="Area2D" parent="overlap_1/portals" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane2" type="Area2D" parent="overlap_1/portals" unique_id=1776739750 node_paths=PackedStringArray("other_side")]
 position = Vector2(480, 624)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../../../overlap_2/portals/portal_plane2")
 point_right = Vector2i(0, 120)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="Sprite2D" type="Sprite2D" parent="overlap_1"]
+[node name="Sprite2D" type="Sprite2D" parent="overlap_1" unique_id=905397037]
 position = Vector2(304, 856)
 texture = ExtResource("4_6ak8e")
 
-[node name="overlap_2" type="Node2D" parent="."]
+[node name="overlap_2" type="Node2D" parent="." unique_id=197013928]
 position = Vector2(4992, 2208)
 
-[node name="floor" type="Polygon2D" parent="overlap_2"]
+[node name="floor" type="Polygon2D" parent="overlap_2" unique_id=830485551]
 color = Color(1.353256, 0.27203575, 0.27203575, 0.34901962)
 texture = ExtResource("3_sqgf4")
 polygon = PackedVector2Array(-16, 16, -16, 952, 624, 952, 624, 16)
 
-[node name="pillars" type="Node2D" parent="overlap_2"]
+[node name="pillars" type="Node2D" parent="overlap_2" unique_id=931805160]
 
-[node name="solid_wall" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall" type="Polygon2D" parent="overlap_2/pillars" unique_id=530484517]
 polygon = PackedVector2Array(240, 0, 240, 48, 0, 48, 0, 936, 600, 936, 600, 48, 360, 48, 360, 0, 648, 0, 648, 984, -48, 984, -48, 0)
 uv = PackedVector2Array(240, 0, 240, 48, 0, 48, 0, 672, 600, 672, 600, 48, 360, 48, 360, 0, 648, 0, 648, 672, 648, 720, -48, 720, -48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall2" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall2" type="Polygon2D" parent="overlap_2/pillars" unique_id=1256069670]
 position = Vector2(96, 120)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall3" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall3" type="Polygon2D" parent="overlap_2/pillars" unique_id=2082617090]
 position = Vector2(96, 240)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall4" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall4" type="Polygon2D" parent="overlap_2/pillars" unique_id=1908761720]
 position = Vector2(96, 360)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall5" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall5" type="Polygon2D" parent="overlap_2/pillars" unique_id=1541328353]
 position = Vector2(96, 480)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall6" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall6" type="Polygon2D" parent="overlap_2/pillars" unique_id=608997460]
 position = Vector2(456, 120)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall7" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall7" type="Polygon2D" parent="overlap_2/pillars" unique_id=377143991]
 position = Vector2(456, 240)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall8" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall8" type="Polygon2D" parent="overlap_2/pillars" unique_id=363334997]
 position = Vector2(456, 360)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall9" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall9" type="Polygon2D" parent="overlap_2/pillars" unique_id=1274341735]
 position = Vector2(456, 480)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall10" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall10" type="Polygon2D" parent="overlap_2/pillars" unique_id=1088680081]
 position = Vector2(456, 600)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall11" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall11" type="Polygon2D" parent="overlap_2/pillars" unique_id=1690305730]
 position = Vector2(456, 720)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall12" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall12" type="Polygon2D" parent="overlap_2/pillars" unique_id=1201226393]
 position = Vector2(96, 600)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall13" type="Polygon2D" parent="overlap_2/pillars"]
+[node name="solid_wall13" type="Polygon2D" parent="overlap_2/pillars" unique_id=1308867976]
 position = Vector2(96, 720)
 polygon = PackedVector2Array(0, 0, 0, 48, 48, 48, 48, 0)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="items" type="Node2D" parent="overlap_2"]
+[node name="items" type="Node2D" parent="overlap_2" unique_id=907313624]
 
-[node name="Polygon2D" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D" type="Polygon2D" parent="overlap_2/items" unique_id=25704331]
 position = Vector2(-8, 192)
 color = Color(0.3399999, 1, 0.27999997, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D2" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D2" type="Polygon2D" parent="overlap_2/items" unique_id=587585956]
 position = Vector2(-8, 312)
 color = Color(0.9280001, 0.27999997, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D3" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D3" type="Polygon2D" parent="overlap_2/items" unique_id=447792900]
 position = Vector2(-8, 432)
 color = Color(0.724, 1, 0.27999997, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D4" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D4" type="Polygon2D" parent="overlap_2/items" unique_id=222976550]
 position = Vector2(-8, 552)
 color = Color(0.27999997, 0.5200001, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D5" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D5" type="Polygon2D" parent="overlap_2/items" unique_id=960023052]
 position = Vector2(-8, 672)
 color = Color(1, 0.27999997, 0.5559999, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D6" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D6" type="Polygon2D" parent="overlap_2/items" unique_id=486894077]
 position = Vector2(600, 672)
 color = Color(0.27999997, 0.56799984, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D7" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D7" type="Polygon2D" parent="overlap_2/items" unique_id=2142678706]
 position = Vector2(600, 552)
 color = Color(1, 0.592, 0.27999997, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D8" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D8" type="Polygon2D" parent="overlap_2/items" unique_id=236145954]
 position = Vector2(600, 432)
 color = Color(0.27999997, 1, 0.6999999, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D9" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D9" type="Polygon2D" parent="overlap_2/items" unique_id=136278224]
 position = Vector2(600, 312)
 color = Color(0.27999997, 0.616, 1, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="Polygon2D10" type="Polygon2D" parent="overlap_2/items"]
+[node name="Polygon2D10" type="Polygon2D" parent="overlap_2/items" unique_id=2096326638]
 position = Vector2(600, 192)
 color = Color(0.27999997, 1, 0.58000004, 1)
 polygon = PackedVector2Array(0, 0, 0, 24, 8, 24, 8, 0)
 
-[node name="portals" type="Node2D" parent="overlap_2"]
+[node name="portals" type="Node2D" parent="overlap_2" unique_id=1015983097]
 
-[node name="portal_plane" type="Area2D" parent="overlap_2/portals" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane" type="Area2D" parent="overlap_2/portals" unique_id=895768641 node_paths=PackedStringArray("other_side")]
 position = Vector2(-16, 144)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../../../overlap_1/portals/portal_plane")
 point_right = Vector2i(130, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane3" type="Area2D" parent="overlap_2/portals" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane3" type="Area2D" parent="overlap_2/portals" unique_id=930283298 node_paths=PackedStringArray("other_side")]
 position = Vector2(-16, 744)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../../../overlap_1/portals/portal_plane3")
 point_right = Vector2i(130, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane2" type="Area2D" parent="overlap_2/portals" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane2" type="Area2D" parent="overlap_2/portals" unique_id=713585071 node_paths=PackedStringArray("other_side")]
 position = Vector2(480, 624)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../../../overlap_1/portals/portal_plane2")
 point_right = Vector2i(0, 120)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="Sprite2D" type="Sprite2D" parent="overlap_2"]
+[node name="Sprite2D" type="Sprite2D" parent="overlap_2" unique_id=1650889729]
 position = Vector2(304, 856)
 texture = ExtResource("4_6ak8e")
 
-[node name="exterior" type="Node2D" parent="."]
+[node name="exterior" type="Node2D" parent="." unique_id=259939015]
 
-[node name="portal_plane" type="Area2D" parent="exterior" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane" type="Area2D" parent="exterior" unique_id=917579779 node_paths=PackedStringArray("other_side")]
 position = Vector2(5184, 1992)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane2")
 point_right = Vector2i(200, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="solid_wall" type="Polygon2D" parent="exterior/portal_plane"]
+[node name="solid_wall" type="Polygon2D" parent="exterior/portal_plane" unique_id=1070352396]
 polygon = PackedVector2Array(0, 24, 24, 8, 0, -24, -40, -8, -24, 32)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall2" type="Polygon2D" parent="exterior/portal_plane"]
+[node name="solid_wall2" type="Polygon2D" parent="exterior/portal_plane" unique_id=2046258501]
 position = Vector2(216, 0)
 polygon = PackedVector2Array(0, 24, 16, 8, 0, -32, -40, -24, -32, 32)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="portal_plane2" type="Area2D" parent="exterior" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane2" type="Area2D" parent="exterior" unique_id=757159585 node_paths=PackedStringArray("other_side")]
 position = Vector2(648, 488)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane")
 point_right = Vector2i(200, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="solid_wall" type="Polygon2D" parent="exterior/portal_plane2"]
+[node name="solid_wall" type="Polygon2D" parent="exterior/portal_plane2" unique_id=596453595]
 polygon = PackedVector2Array(0, 24, 24, 8, 0, -24, -40, -8, -24, 32)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall2" type="Polygon2D" parent="exterior/portal_plane2"]
+[node name="solid_wall2" type="Polygon2D" parent="exterior/portal_plane2" unique_id=1007272177]
 position = Vector2(216, 0)
 polygon = PackedVector2Array(0, 24, 16, 8, 0, -32, -40, -24, -32, 32)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="garden" type="Node2D" parent="."]
+[node name="garden" type="Node2D" parent="." unique_id=1405606874]
 position = Vector2(5656, 1520)
 
-[node name="carpet" type="Polygon2D" parent="garden"]
+[node name="carpet" type="Polygon2D" parent="garden" unique_id=1921580449]
 texture = SubResource("NoiseTexture2D_04w0f")
 polygon = PackedVector2Array(-976, 64, -312, 64, -312, -440, -976, -440)
 
-[node name="carpet2" type="Polygon2D" parent="garden"]
+[node name="carpet2" type="Polygon2D" parent="garden" unique_id=2067215978]
 position = Vector2(-8, 552)
 texture = SubResource("NoiseTexture2D_vvrx0")
 polygon = PackedVector2Array(-976, -264, -56, -264, -56, -992, -176, -992, -176, -440, -976, -440)
 
-[node name="walls" type="Node2D" parent="garden"]
+[node name="walls" type="Node2D" parent="garden" unique_id=1722604933]
 
-[node name="solid_wall" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall" type="Polygon2D" parent="garden/walls" unique_id=959433220]
 position = Vector2(-296, -192)
 polygon = PackedVector2Array(-88, 88, 128, 88, 128, 40, -88, 40)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall6" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall6" type="Polygon2D" parent="garden/walls" unique_id=272765659]
 position = Vector2(-296, -336)
 polygon = PackedVector2Array(-88, 88, 128, 88, 128, 40, -88, 40)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall2" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall2" type="Polygon2D" parent="garden/walls" unique_id=823163109]
 position = Vector2(-296, -48)
 polygon = PackedVector2Array(-88, 88, 128, 88, 128, 40, -88, 40)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall3" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall3" type="Polygon2D" parent="garden/walls" unique_id=2090845128]
 polygon = PackedVector2Array(-664, 16, -664, 136, -712, 136, -712, 16)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall4" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall4" type="Polygon2D" parent="garden/walls" unique_id=1583920869]
 position = Vector2(-144, 0)
 polygon = PackedVector2Array(-664, 16, -664, 136, -712, 136, -712, 16)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall5" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall5" type="Polygon2D" parent="garden/walls" unique_id=1735710489]
 position = Vector2(-288, 0)
 polygon = PackedVector2Array(-664, 16, -664, 136, -712, 136, -712, 16)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall7" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall7" type="Polygon2D" parent="garden/walls" unique_id=1248086956]
 position = Vector2(-464, -440)
 polygon = PackedVector2Array(-768, -136, -528, 136, -576, 168, -824, -136)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="solid_wall8" type="Polygon2D" parent="garden/walls"]
+[node name="solid_wall8" type="Polygon2D" parent="garden/walls" unique_id=696525099]
 position = Vector2(-504, 72)
 polygon = PackedVector2Array(-528, -208, -680, 32, -744, 0, -584, -216)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="edge" type="Polygon2D" parent="garden"]
+[node name="edge" type="Polygon2D" parent="garden" unique_id=163241724]
 polygon = PackedVector2Array(-1408, -416, -1360, -416, -1360, -464, -1288, -536, -1024, -536, -1024, -728, -1072, -728, -1072, -584, -1312, -584, -1408, -488)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="edge2" type="Polygon2D" parent="garden"]
+[node name="edge2" type="Polygon2D" parent="garden" unique_id=168430794]
 position = Vector2(920, -24)
 polygon = PackedVector2Array(-1488, -560, -1488, -512, -960, -512, -864, -416, -864, -368, -816, -368, -816, -416, -936, -560, -1432, -560, -1432, -704, -1488, -704)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="edge4" type="Polygon2D" parent="garden"]
+[node name="edge4" type="Polygon2D" parent="garden" unique_id=414578267]
 position = Vector2(1472, 360)
 polygon = PackedVector2Array(-1416, -800, -1416, -168, -1416, 256, -1488, 328, -1528, 328, -1536, 376, -1440, 376, -1368, 272, -1368, -168, -1368, -800)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="edge3" type="Polygon2D" parent="garden"]
+[node name="edge3" type="Polygon2D" parent="garden" unique_id=1838474285]
 position = Vector2(96, 672)
 polygon = PackedVector2Array(-1504, -632, -1504, -512, -1504, -312, -1032, 64, -808, 64, -752, 64, -752, 16, -808, 16, -976, 16, -1288, -296, -1360, -296, -1456, -392, -1456, -584, -1456, -632)
 script = ExtResource("7_nakos")
 metadata/_custom_type_script = "uid://ch1nxmf4hv8qb"
 
-[node name="portal_plane" type="Area2D" parent="garden" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane" type="Area2D" parent="garden" unique_id=1496423097 node_paths=PackedStringArray("other_side")]
 position = Vector2(-288, -264)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane2")
 point_right = Vector2i(0, 128)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane2" type="Area2D" parent="garden" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane2" type="Area2D" parent="garden" unique_id=147746019 node_paths=PackedStringArray("other_side")]
 position = Vector2(-696, 80)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane")
 point_right = Vector2i(-128, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane3" type="Area2D" parent="garden" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane3" type="Area2D" parent="garden" unique_id=2107429505 node_paths=PackedStringArray("other_side")]
 position = Vector2(-968, 80)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane4")
 point_right = Vector2i(128, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="portal_plane4" type="Area2D" parent="garden" node_paths=PackedStringArray("other_side")]
+[node name="portal_plane4" type="Area2D" parent="garden" unique_id=1050730454 node_paths=PackedStringArray("other_side")]
 position = Vector2(-208, -120)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../portal_plane3")
 point_right = Vector2i(0, 128)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="large_1" type="Area2D" parent="garden" node_paths=PackedStringArray("other_side")]
+[node name="large_1" type="Area2D" parent="garden" unique_id=593435439 node_paths=PackedStringArray("other_side")]
 position = Vector2(-1384, 64)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../large_2")
 point_right = Vector2i(0, -500)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="large_2" type="Area2D" parent="garden" node_paths=PackedStringArray("other_side")]
+[node name="large_2" type="Area2D" parent="garden" unique_id=1654506300 node_paths=PackedStringArray("other_side")]
 position = Vector2(-544, -704)
 script = ExtResource("7_jh32y")
 other_side = NodePath("../large_1")
 point_right = Vector2i(-500, 0)
 metadata/_custom_type_script = "uid://c1kctx3daespq"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=984753344]
 offset_left = 4832.0
 offset_top = 784.0
 offset_right = 4900.0
 offset_bottom = 807.0
 text = "OUTSIDE"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=980013746]
 offset_left = 4064.0
 offset_top = 1256.0
 offset_right = 4132.0
 offset_bottom = 1279.0
 text = "OUTSIDE"
+
+[node name="Ball" parent="." unique_id=842663506 instance=ExtResource("8_sqgf4")]
+position = Vector2(1402, 1578)
+tint_color = Color(1, 0.36, 0.36, 1)
+bounciness = 0.95
+
+[node name="Ball2" parent="." unique_id=1613245955 instance=ExtResource("8_sqgf4")]
+position = Vector2(1665, 1201)
+texture = SubResource("CanvasTexture_b56te")
+
+[node name="Ball3" parent="." unique_id=1158334685 instance=ExtResource("8_sqgf4")]
+position = Vector2(1815, 1037)
+tint_color = Color(0.29000002, 0.7278333, 1, 1)
+
+[node name="Ball4" parent="." unique_id=2025772758 instance=ExtResource("8_sqgf4")]
+position = Vector2(2034, 1603)
+tint_color = Color(0.52166665, 1, 0.18, 1)
+
+[node name="Ball5" parent="." unique_id=381575191 instance=ExtResource("8_sqgf4")]
+position = Vector2(2059, 1309)
+tint_color = Color(1, 0.32, 0.84133315, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=603142580]
+energy = 0.25
+blend_mode = 2
+height = 1.0

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d2rgu3pfx76k8"]
+
+[ext_resource type="Script" uid="uid://c0xxtmjfkexik" path="res://scenes/mobs/ball.gd" id="1_2hkbb"]
+[ext_resource type="Texture2D" uid="uid://b11f2dw6g6b52" path="res://graphics/grid_32.png" id="2_4ivfg"]
+[ext_resource type="Texture2D" uid="uid://vpnup8kuapve" path="res://graphics/ball_normal.png" id="3_4jeol"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dgu2d"]
+diffuse_texture = ExtResource("2_4ivfg")
+normal_texture = ExtResource("3_4jeol")
+
+[node name="Ball" type="StaticBody2D" unique_id=842663506]
+script = ExtResource("1_2hkbb")
+texture = SubResource("CanvasTexture_dgu2d")

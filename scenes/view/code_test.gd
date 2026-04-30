@@ -15,7 +15,7 @@ func _ready() -> void:
 	Global.view_rotated.connect( rotate_camera )
 	Global.player_moved.connect( position_camera )
 	# Hacky force everything to update
-	Global.player_moved.emit( player.position )
+	Global.player_moved.emit( player.global_position, player.get_view_poly() )
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -31,7 +31,7 @@ func connect_portals() -> void:
 	for portal : portal_plane in portals:
 		portal.connect_signals()
 	for portal : portal_plane in portals:
-		portal.update_position( player.position )
+		portal.update_position( player.global_position, player.get_view_poly() )
 
 func connect_player()->void:
 	# TODO Unhardcode this
@@ -56,7 +56,7 @@ func rotate_camera( view_rotation : Transform2D ) -> void:
 	$overlay/SubViewport/Node2D.transform = view_rotation
 	pass
 
-func position_camera( new_pos : Vector2 ) -> void:
-	$vision/Node2D.position = new_pos
-	$overlay/SubViewport/Node2D.position = new_pos
+func position_camera( pos : Vector2, _area : PackedVector2Array ) -> void:
+	$vision/Node2D.position = pos
+	$overlay/SubViewport/Node2D.position = pos
 	pass

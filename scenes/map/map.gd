@@ -50,13 +50,13 @@ func get_walls( node : Node = self ) -> Array[solid_wall]:
 	return ret
 
 ## Updates portal shadows to match the camera
-func update_portals( camera_pos : Vector2 ) -> void:
+func update_portals( pos : Vector2, view : PackedVector2Array ) -> void:
 	for portal : portal_plane in portals:
-		portal.update_position( camera_pos )
+		portal.update_position( pos, view )
 	# Sort portal shadows in scene tree every now and then th make them overlap properly
-	if previous_camera_pos.distance_squared_to( camera_pos ) > 100:
-		previous_camera_pos = camera_pos
-		view_control.sort_projections( camera_pos )
+	if previous_camera_pos.distance_squared_to( pos ) > 100:
+		previous_camera_pos = pos
+		view_control.sort_projections( pos )
 		pass
 	view_control.update_occlusion()
 	
