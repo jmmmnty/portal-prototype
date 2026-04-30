@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy4my6x5hjqo7"]
+[gd_scene format=3 uid="uid://dy4my6x5hjqo7"]
 
 [sub_resource type="Gradient" id="Gradient_iu53m"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -9,7 +9,7 @@ width = 2000
 height = 2000
 fill_from = Vector2(0.5, 0.5)
 
-[node name="PointLight2D" type="PointLight2D"]
+[node name="PointLight2D" type="PointLight2D" unique_id=173171579]
 range_item_cull_mask = 16
 shadow_enabled = true
 shadow_item_cull_mask = 17

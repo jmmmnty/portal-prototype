@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvrltm04x1si0"]
+[gd_scene format=3 uid="uid://bvrltm04x1si0"]
 
 [ext_resource type="Script" uid="uid://c0l0at6i6v1xf" path="res://scenes/ui/settings/setting_bool.gd" id="1_aviqc"]
 
-[node name="SettingBool" type="HBoxContainer"]
+[node name="SettingBool" type="HBoxContainer" unique_id=1437349245]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -13,13 +13,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aviqc")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1134165800]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=931597461]
 layout_mode = 2
 text = "?"
 
-[node name="CheckButton" type="CheckButton" parent="."]
+[node name="CheckButton" type="CheckButton" parent="." unique_id=2074646540]
 layout_mode = 2
 size_flags_horizontal = 10

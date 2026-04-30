@@ -117,7 +117,7 @@ func get_internal_resolution()->Vector2i:
 	return configuration.get_value( "video", "internal_resolution")
 
 func get_resolution_flex()->Vector2:
-	var value : Vector2 = configuration.get_value( "video", "resoluion_flex")
+	var value : Vector2 = configuration.get_value( "video", "resolution_flex")
 	return value
 
 func get_fractional_scaling()->bool:

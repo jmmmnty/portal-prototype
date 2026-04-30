@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnpxvpa5581m4"]
+[gd_scene format=3 uid="uid://cnpxvpa5581m4"]
 
 [ext_resource type="Script" uid="uid://caqordpxaybct" path="res://scenes/view/code_test.gd" id="1_rnrlo"]
 [ext_resource type="PackedScene" uid="uid://d13cxj04vqj7f" path="res://scenes/map/map.tscn" id="2_ag2uy"]
@@ -37,7 +37,7 @@ height = 2000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Control" type="Control" node_paths=PackedStringArray("player", "world")]
+[node name="Control" type="Control" unique_id=307048068 node_paths=PackedStringArray("player", "world")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,32 +48,30 @@ script = ExtResource("1_rnrlo")
 player = NodePath("main_view/SubViewport/world/map/Player")
 world = NodePath("main_view/SubViewport/world")
 
-[node name="vision" type="SubViewport" parent="."]
+[node name="vision" type="SubViewport" parent="." unique_id=1292642583]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
-snap_2d_transforms_to_pixel = true
-snap_2d_vertices_to_pixel = true
 msaa_2d = 2
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 script = ExtResource("7_ve3xc")
 
-[node name="Node2D" type="Node2D" parent="vision"]
+[node name="Node2D" type="Node2D" parent="vision" unique_id=785178673]
 
-[node name="Camera2D" type="Camera2D" parent="vision/Node2D"]
+[node name="Camera2D" type="Camera2D" parent="vision/Node2D" unique_id=1436177811]
 ignore_rotation = false
 
-[node name="Polygon2D" type="Polygon2D" parent="vision/Node2D"]
+[node name="Polygon2D" type="Polygon2D" parent="vision/Node2D" unique_id=1970579473]
 light_mask = 16
 visibility_layer = 16
 material = SubResource("CanvasItemMaterial_oxfqq")
 
-[node name="PointLight2D" parent="vision/Node2D" instance=ExtResource("6_eltf1")]
+[node name="PointLight2D" parent="vision/Node2D" unique_id=1395197479 instance=ExtResource("6_eltf1")]
 
-[node name="vision" type="Node2D" parent="vision"]
+[node name="vision" type="Node2D" parent="vision" unique_id=2104944511]
 
-[node name="main_view" type="SubViewportContainer" parent="."]
+[node name="main_view" type="SubViewportContainer" parent="." unique_id=1912247968]
 physics_interpolation_mode = 0
 layout_mode = 1
 offset_right = 800.0
@@ -81,32 +79,34 @@ offset_bottom = 480.0
 stretch = true
 script = ExtResource("2_f0avc")
 
-[node name="SubViewport" type="SubViewport" parent="main_view"]
+[node name="SubViewport" type="SubViewport" parent="main_view" unique_id=2100116966]
 disable_3d = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
 msaa_2d = 2
 canvas_item_default_texture_filter = 0
 canvas_item_default_texture_repeat = 1
+audio_listener_enable_2d = true
 size = Vector2i(800, 480)
 render_target_update_mode = 4
 script = ExtResource("5_erqam")
 metadata/_custom_type_script = "uid://bdcb1u7meekwi"
 
-[node name="world" type="Node2D" parent="main_view/SubViewport"]
+[node name="world" type="Node2D" parent="main_view/SubViewport" unique_id=1086066507]
 
-[node name="map" parent="main_view/SubViewport/world" node_paths=PackedStringArray("view_control", "player") instance=ExtResource("2_ag2uy")]
+[node name="map" parent="main_view/SubViewport/world" unique_id=648664603 node_paths=PackedStringArray("view_control", "player") instance=ExtResource("2_ag2uy")]
 view_control = NodePath("../../../..")
 player = NodePath("Player")
 
-[node name="Player" parent="main_view/SubViewport/world/map" instance=ExtResource("6_xign1")]
+[node name="Player" parent="main_view/SubViewport/world/map" unique_id=212388883 instance=ExtResource("6_xign1")]
 position = Vector2(1144, 356)
 
-[node name="Camera2D" type="Camera2D" parent="main_view/SubViewport/world/map/Player"]
+[node name="Camera2D" type="Camera2D" parent="main_view/SubViewport/world/map/Player" unique_id=1414021417]
 ignore_rotation = false
 script = ExtResource("7_erqam")
 
-[node name="overlay" type="SubViewportContainer" parent="."]
+[node name="overlay" type="SubViewportContainer" parent="." unique_id=1189425776]
 physics_interpolation_mode = 0
 layout_mode = 1
 offset_right = 800.0
@@ -114,7 +114,7 @@ offset_bottom = 480.0
 stretch = true
 script = ExtResource("6_jgbbk")
 
-[node name="SubViewport" type="SubViewport" parent="overlay"]
+[node name="SubViewport" type="SubViewport" parent="overlay" unique_id=1844013677]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -126,24 +126,24 @@ size = Vector2i(800, 480)
 render_target_update_mode = 4
 script = ExtResource("6_sqg8x")
 
-[node name="projections" type="Node2D" parent="overlay/SubViewport"]
+[node name="projections" type="Node2D" parent="overlay/SubViewport" unique_id=1726703173]
 light_mask = 0
 
-[node name="Node2D" type="Node2D" parent="overlay/SubViewport"]
+[node name="Node2D" type="Node2D" parent="overlay/SubViewport" unique_id=2014409597]
 
-[node name="Camera2D" type="Camera2D" parent="overlay/SubViewport/Node2D"]
+[node name="Camera2D" type="Camera2D" parent="overlay/SubViewport/Node2D" unique_id=1139444804]
 ignore_rotation = false
 
-[node name="vision" type="Polygon2D" parent="overlay/SubViewport/Node2D"]
+[node name="vision" type="Polygon2D" parent="overlay/SubViewport/Node2D" unique_id=1466115837]
 material = SubResource("ShaderMaterial_oxfqq")
 texture = SubResource("ViewportTexture_ve3xc")
 
-[node name="light" type="Sprite2D" parent="overlay/SubViewport/Node2D"]
+[node name="light" type="Sprite2D" parent="overlay/SubViewport/Node2D" unique_id=42742525]
 visible = false
 material = SubResource("CanvasItemMaterial_oiouk")
 texture = SubResource("GradientTexture2D_oiouk")
 
-[node name="fps_counter" type="Label" parent="."]
+[node name="fps_counter" type="Label" parent="." unique_id=1061313707]
 top_level = true
 layout_mode = 0
 offset_right = 40.0

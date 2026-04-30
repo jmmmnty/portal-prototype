@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cumopveaerhhu"]
+[gd_scene format=3 uid="uid://cumopveaerhhu"]
 
 [ext_resource type="Script" uid="uid://ch1nxmf4hv8qb" path="res://scenes/mapping/wall_vision_blocking.gd" id="1_cx45c"]
 
-[node name="wall_vision_blocking" type="Polygon2D"]
+[node name="wall_vision_blocking" type="Polygon2D" unique_id=1801670230]
 script = ExtResource("1_cx45c")

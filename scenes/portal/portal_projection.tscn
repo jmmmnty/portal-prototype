@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1egjov66cong"]
+[gd_scene format=3 uid="uid://d1egjov66cong"]
 
 [sub_resource type="GDScript" id="GDScript_cbeha"]
 script/source = "extends Polygon2D
 class_name portal_projection
 "
 
-[node name="portal_projection" type="Polygon2D"]
+[node name="portal_projection" type="Polygon2D" unique_id=737600355]
 light_mask = 0
 script = SubResource("GDScript_cbeha")

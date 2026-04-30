@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cno1hdo8j8lvc"]
+[gd_scene format=3 uid="uid://cno1hdo8j8lvc"]
 
 [ext_resource type="Script" uid="uid://cewb72b580gdt" path="res://scenes/ui/about.gd" id="1_xf6rd"]
 
-[node name="About" type="Control"]
+[node name="About" type="Control" unique_id=885787602]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ size_flags_vertical = 3
 script = ExtResource("1_xf6rd")
 metadata/_tab_index = 3
 
-[node name="lisence" type="RichTextLabel" parent="."]
+[node name="lisence" type="RichTextLabel" parent="." unique_id=1530710876]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

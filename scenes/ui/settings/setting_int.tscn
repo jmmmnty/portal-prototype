@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccirkrjrs33t1"]
+[gd_scene format=3 uid="uid://ccirkrjrs33t1"]
 
 [ext_resource type="Script" uid="uid://c13y0xwsm1peu" path="res://scenes/ui/settings/setting_int.gd" id="1_c7b1c"]
 
-[node name="SettingInt" type="HBoxContainer"]
+[node name="SettingInt" type="HBoxContainer" unique_id=67484433]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -13,24 +13,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c7b1c")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1802951776]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=216554568]
 layout_mode = 2
 text = "?"
 
-[node name="space" type="Control" parent="."]
+[node name="space" type="Control" parent="." unique_id=1069842278]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="TextEdit" type="TextEdit" parent="." unique_id=526815525]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="space2" type="Control" parent="."]
+[node name="space2" type="Control" parent="." unique_id=2002497816]
 layout_mode = 2
 size_flags_horizontal = 3
 

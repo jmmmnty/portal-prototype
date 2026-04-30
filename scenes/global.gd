@@ -2,7 +2,7 @@ extends Node
 
 var view_rotation : Transform2D = Transform2D()
 signal view_rotated( new_rotation : Transform2D )
-signal player_moved( new_position : Vector2)
+signal player_moved( pos : Vector2, view : PackedVector2Array )
 
 var old_mode : DisplayServer.WindowMode = DisplayServer.WINDOW_MODE_WINDOWED
 
@@ -39,8 +39,8 @@ func set_view_transform( new_transform : Transform2D ) -> void:
 	view_rotated.emit( new_transform )
 
 
-func player_moving( player_global_pos : Vector2 ) -> void:
-	player_moved.emit( player_global_pos )
+func player_moving( pos : Vector2, view : PackedVector2Array ) -> void:
+	player_moved.emit( pos, view )
 
 func mouse_hide()->void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

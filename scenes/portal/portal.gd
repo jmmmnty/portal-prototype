@@ -199,34 +199,34 @@ func connect_signals()->void:
 	return
 
 ## Area occluded by the portal as seen from the view_pos
-## view_pos is in global coordinates
+## view_pos and view_area in global coordinates
 ## Returned polygon is in local coordinates
-func occluded_area( view_pos : Vector2 ) -> PackedVector2Array:
+func occluded_area( pos : Vector2, view_area : PackedVector2Array ) -> PackedVector2Array:
 	var polygon : PackedVector2Array
 	polygon.append( endpoints[0] )
 	polygon.append( endpoints[1] )
 	
-	var in_portal : bool = point_is_in_portal( view_pos )
-	var dist : float = distance_from_plane( view_pos )
+	var in_portal : bool = point_is_in_portal( pos )
+	var dist : float = distance_from_plane( pos )
+	var view_size : float = (view_area[0] - view_area[2]).length()
 	# Viewer pos in local coordinates and rounded
-	var local_view_pos : Vector2 = ( view_pos - global_position ).round()
+	var local_view_pos : Vector2 = ( pos - global_position ).round()
+	# View area in local coordinates
+	view_area = view_area * Transform2D( 0, global_position )
 	
 	# Extensions from view pos
 	polygon.append( endpoints[1] \
 		+ ( endpoints[1] - local_view_pos ).normalized() \
-		* ResolutionManager.viewport_resolution.length() *0.5 )
+		* view_size *0.5 )
 	
 	polygon.append( endpoints[0] \
 		+ ( endpoints[0] - local_view_pos ).normalized() \
-		* ResolutionManager.viewport_resolution.length() *0.5 )
-	
-	# View may be rotated sideways
-	var view_area : PackedVector2Array = Transform2D(0, local_view_pos) * Global.view_rotation * ResolutionManager.viewport_polygon
+		* view_size *0.5 )
 	
 	# Extra points in view corners that need to be included
 	if dist < 2 and in_portal:
 		# This approach works if player is right on top of the portal
-		var player_side : int = portal_side( view_pos )
+		var player_side : int = portal_side( pos )
 		for point in view_area:
 			if portal_side_local( point ) != player_side:
 				polygon.append( point )
@@ -248,14 +248,14 @@ func occluded_area( view_pos : Vector2 ) -> PackedVector2Array:
 		polygon = [Vector2.ZERO, Vector2.ZERO, Vector2.ZERO]
 	
 	# We can't have non-integer points in the shape
-	for i in range( polygon.size() ):
-		polygon[i] = floor( polygon[i] )
+	#for i in range( polygon.size() ):
+	#	polygon[i] = floor( polygon[i] )
 	return polygon
 
 
-func update_position( viewer_position : Vector2 )->void:
+func update_position( pos : Vector2, view : PackedVector2Array )->void:
 	# viewer_position is in global coordinates 
-	occlusion_polygon = occluded_area( viewer_position )
+	occlusion_polygon = occluded_area( pos, view)
 	projection.polygon = occlusion_polygon
 	var offset : Vector2 =  utils.get_polygon_corner( rotation_transform * occlusion_polygon )
 	# Camere is always at origin of the portal. But the shadow may not be there
@@ -336,12 +336,9 @@ func point_is_in_portal( point : Vector2 ) -> bool:
 	var b : float = ( Vector2( point_right ) + local ).length()
 	return d > a and d > b
 
-func teleport_object( node : Mob ) -> void:
+func teleport_object( node : Node2D ) -> void:
 	print( node.name, " teleported from ", name, " to ", other_side.name)
 	node.global_position = point_to_other_side( node.global_position )
-	node.add_rotation( rotation_transform.get_rotation() )
-	node.apply_camera_rotation( rotation_transform )
-	node.near_portal = other_side
 	# A bit hacky way to force the other viewport to render immediately now
 	# As it may not not be yet in view
 	other_side.subview.render_target_update_mode = SubViewport.UPDATE_ALWAYS

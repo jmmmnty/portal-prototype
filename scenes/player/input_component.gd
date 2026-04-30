@@ -2,7 +2,8 @@ extends UnitComponent
 class_name InputComponent
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process( delta: float) -> void:
 	var direction : Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	main_node.move( direction, _delta )
+	var stop : bool = Input.is_action_pressed( "move_stop" )
+	main_node.move( direction, stop, delta )
 	

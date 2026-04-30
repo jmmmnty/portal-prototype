@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cmlcbxgbyaois"]
+
+[ext_resource type="Shader" uid="uid://udagvem0jey5" path="res://shader/sphere.gdshader" id="1_jwbyw"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_jwbyw")
+shader_parameter/quaternion = Vector4(0, 0, 0, 1)
+shader_parameter/tint_color = Color(0.3882353, 0.6627451, 0.83137256, 1)
