@@ -78,6 +78,7 @@ func create_nodes()->void:
 	
 	audio = AudioStreamPlayer2D.new()
 	audio.stream = load( "res://audio/random_bounce.tres" )
+
 	audio.max_distance = 1000
 	audio.attenuation = 1.2
 	add_child( audio )
@@ -180,7 +181,6 @@ func move( _direction : Vector2, _stop : bool, delta : float ) -> void:
 			new_portal_side = near_portal.portal_side(global_position)
 			if new_portal_side == 0:
 				push_warning( "STILL STANDING ON TOP OF PORTAL" )
-
 
 		if new_portal_side != old_portal_side and near_portal.point_is_in_portal( global_position ):
 			# Teleported
