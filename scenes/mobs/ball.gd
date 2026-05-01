@@ -78,6 +78,9 @@ func create_nodes()->void:
 	
 	audio = AudioStreamPlayer2D.new()
 	audio.stream = load( "res://audio/random_bounce.tres" )
+
+	audio.max_distance = 1000
+	audio.attenuation = 1.2
 	add_child( audio )
 	
 	proximity_shape = CollisionShape2D.new()
@@ -178,19 +181,19 @@ func move( _direction : Vector2, _stop : bool, delta : float ) -> void:
 			new_portal_side = near_portal.portal_side(global_position)
 			if new_portal_side == 0:
 				push_warning( "STILL STANDING ON TOP OF PORTAL" )
-		
-		
+
 		if new_portal_side != old_portal_side and near_portal.point_is_in_portal( global_position ):
 			# Teleported
 			teleport( near_portal )
+			portal_shadow = near_portal.occluded_area( position, Transform2D( 0, global_position ) * view_poly  )
 			clip_collision( portal_shadow, near_portal.global_position, offset )
 			clip_copy_collision()
-		
-		portal_side = new_portal_side
-		
-		portal_shadow = near_portal.occluded_area( position, Transform2D( 0, global_position ) * view_poly  )
-		clip_collision( portal_shadow, near_portal.global_position, Vector2(0,0) )
-		clip_visuals( near_portal.global_position, portal_shadow )
+			portal_side = new_portal_side
+		else:
+			portal_shadow = near_portal.occluded_area( position, Transform2D( 0, global_position ) * view_poly  )
+			clip_collision( portal_shadow, near_portal.global_position, Vector2(0,0) )
+			clip_visuals( near_portal.global_position, portal_shadow )
+
 		set_copy_visual()
 		
 	else:
